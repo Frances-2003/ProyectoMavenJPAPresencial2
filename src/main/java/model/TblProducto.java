@@ -21,7 +21,8 @@ public class TblProducto implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	private Date fechaven;
-
+	 @Id
+	   @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idproducto;
 
 	private String nomprod;

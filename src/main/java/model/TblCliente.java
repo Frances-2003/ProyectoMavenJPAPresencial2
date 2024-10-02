@@ -19,7 +19,8 @@ public class TblCliente implements Serializable {
 	private String dbi;
 
 	private String email;
-
+   @Id
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idcliente;
 
 	private String nombre;

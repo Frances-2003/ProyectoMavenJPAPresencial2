@@ -15,7 +15,8 @@ public class TblUsuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String clave;
-
+	 @Id
+	   @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idestudiante;
 
 	private String usuario;
