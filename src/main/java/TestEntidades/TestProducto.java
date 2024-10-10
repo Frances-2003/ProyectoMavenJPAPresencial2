@@ -14,7 +14,7 @@ public class TestProducto {
 		TblProducto tblpro = new TblProducto();
 		TblProductoImp impro= new TblProductoImp();
 		
-		/*
+		
 		// asignamos valores
 		tblpro.setNomprod("Azucar Blanca");
 		tblpro.setPrecio(3.5);
@@ -29,9 +29,9 @@ public class TestProducto {
 		impro.RegistrarProducto(tblpro);
 		
 		System.out.println("Dato Registrado en la Bd");
-		*/
 		
-		//Actualizar
+		
+		/*//Actualizar
 		tblpro.setIdproducto(2);
 		tblpro.setNomprod("sal");
 		tblpro.setPrecio(3.5);
@@ -46,7 +46,7 @@ public class TestProducto {
 		impro.ActualizarProducto(tblpro);
 		
 		System.out.println("Dato Actualizado en la Bd");
-
+*/
 	}// fin del metodo principal
 
 }// fin de la clase

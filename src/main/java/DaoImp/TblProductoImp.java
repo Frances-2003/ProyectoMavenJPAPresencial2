@@ -60,20 +60,75 @@ public class TblProductoImp implements IProducto{
 
 	@Override
 	public void EliminarProducto(TblProducto producto) {
-		// TODO Auto-generated method stub
+		// nos conectamos con la U.P
+				EntityManagerFactory emf=Persistence.createEntityManagerFactory("ProyectoJPAMavenMarNoche");
+				EntityManager em= emf.createEntityManager();
+				
+				try {
+					em.getTransaction().begin();
+					//recuperamos el codigo a eliminar
+					TblProducto codelim=em.find(TblProducto.class, producto.getIdproducto());
+					//aplicamos una condicion
+					if(codelim !=null){
+						em.remove(codelim);
+					}
+					//confirmamos
+					em.getTransaction().commit();
+					
+					
+				} catch (Exception e) {
+					if(em.getTransaction().isActive()) em.getTransaction().rollback();
+					e.getMessage();
+				}finally{
+					//cerramos 
+					em.close();
+				}
 		
 	}// fin del metodo Eliminar
 
 	@Override
 	public List<TblProducto> ListarProducto() {
-		// TODO Auto-generated method stub
-		return null;
+		// nos conectamos con la U.P
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("ProyectoJPAMavenMarNoche");
+		EntityManager em= emf.createEntityManager();
+		List<TblProducto> listado=null;
+		//iniciamos la transaccion
+		try {
+			em.getTransaction().begin();
+			//aplicando JPQL(JAVA PERSISTENCE QUERY LANGUAGE)
+			listado=em.createQuery("select p from TblProducto p", TblProducto.class).getResultList();
+			em.getTransaction().commit();
+			
+			
+			
+		} catch (Exception e) {
+			e.getMessage();
+		}finally{
+			em.close();
+		}
+		return listado;
 	}// fin del metodo Listar
 
 	@Override
 	public TblProducto BuscarProducto(TblProducto producto) {
-		// TODO Auto-generated method stub
-		return null;
+		// nos conectamos con la U.P
+				EntityManagerFactory emf=Persistence.createEntityManagerFactory("ProyectoJPAMavenMarNoche");
+				EntityManager em= emf.createEntityManager();
+				TblProducto buscaprod=null;
+			try {
+			//iniciamos la transaccion	
+				em.getTransaction().begin();
+				buscaprod=em.find(TblProducto.class,producto.getIdproducto());
+				//confirmamos
+				em.getTransaction().commit();
+			} catch (Exception e) {
+				e.getMessage();
+			}finally{
+				em.close();
+			}
+		
+				
+		return buscaprod;
 	}//Fin del metodo Buscard
 
 }
